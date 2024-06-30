@@ -1,11 +1,13 @@
 FROM golang:1.21.6
 
-WORKDIR /app
+WORKDIR /Final-project12
 
-COPY . .
+COPY go.mod go.sum ./
 
-RUN go mod tidy
+RUN go mod download
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /main main.go
+COPY *.go *.db ./
 
-CMD ["/main"]
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /Final-project12
+
+CMD ["/Finalproject12"]
